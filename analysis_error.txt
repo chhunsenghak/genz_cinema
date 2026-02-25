@@ -1,0 +1,4 @@
+Analyzing genz_cinema...                                        
+
+  error - Undefined name 'MainAutoresizing' - lib\features\wallet\presentation\wallet_screen.dart:32:36 - undefined_identifier
+
