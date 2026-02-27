@@ -34,14 +34,14 @@ class Movie {
 
   factory Movie.fromMap(Map<String, dynamic> map) {
     return Movie(
-      id: map['id'],
-      title: map['title'],
-      rating: map['rating'],
-      genre: map['genre'],
-      ratingLimit: map['ratingLimit'],
-      synopsis: map['synopsis'],
-      imagePath: map['imagePath'],
-      bannerPath: map['bannerPath'],
+      id: (map['id'] as num?)?.toInt(),
+      title: (map['title'] ?? '') as String,
+      rating: (map['rating'] as num?)?.toDouble() ?? 0.0,
+      genre: (map['genre'] ?? '') as String,
+      ratingLimit: (map['ratingLimit'] ?? '13+') as String,
+      synopsis: (map['synopsis'] ?? '') as String,
+      imagePath: (map['imagePath'] ?? '') as String,
+      bannerPath: (map['bannerPath'] ?? '') as String,
     );
   }
 }
