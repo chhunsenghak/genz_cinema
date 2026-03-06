@@ -68,6 +68,30 @@ class HomeContent extends StatelessWidget {
     return FutureBuilder<List<Movie>>(
       future: MovieRepository.getMovies(),
       builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return CustomScrollView(
+            slivers: [
+              const SliverAppBar(
+                floating: true,
+                pinned: true,
+                backgroundColor: AppColors.background,
+                title: Text('GenZ Cinema', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+              ),
+              SliverFillRemaining(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: Text(
+                      'Failed to load movies:\n${snapshot.error}',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+
         final movies = snapshot.data ?? [];
 
         return CustomScrollView(
